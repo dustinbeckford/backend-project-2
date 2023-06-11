@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('../partials/head'); %>
+
+    <title>Log-In</title>
+    <style>
+        body {
+            background-color: #1a1a1a;
+            color: #ffffff;
+        }
+
+        .container {
+            width: 25%;
+            margin-top: 100px;
+        }
+
+        .form-control {
+            border-radius: 25px;
+            background-color: #ffffff;
+            color: #343a40;
+        }
+
+        .btn-primary {
+            width: 50%;
+            border-radius: 25px;
+            background-color: #007bff;
+            border-color: #007bff;
+        }
+
+        .navbar-form {
+            margin-top: 15px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+
+        .navbar-form .form-group {
+            margin-right: 10px;
+        }
+
+        .footer {
+            background-color: #343a40;
+            padding: 20px 0;
+            color: #ffffff;
+        }
+
+        .footer p {
+            margin: 0;
+            text-align: center;
+        }
+
+        .footer h3 {
+            margin: 10px 0;
+            text-align: center;
+        }
+
+        .footer form {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .footer input[type="email"] {
+            border-radius: 25px;
+            padding: 10px;
+        }
+
+        .footer button {
+            margin-left: 10px;
+            border-radius: 25px;
+            background-color: #007bff;
+            border-color: #007bff;
+            padding: 10px 20px;
+            color: #ffffff;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-secondary">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Navbar</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Features</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Pricing</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link disabled">Disabled</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="d-flex flex-row-reverse">
+                <form class="form-inline navbar-form" action="/auth/login" method="post">
+                    <div class="form-group">
+                        <input type="text" name="username" class="form-control rounded-pill" placeholder="Username">
+                    </div>
+                    <div class="form-group">
+                        <input type="password" name="password" class="form-control rounded-pill" placeholder="Password">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Log In</button>
+                </form>
+            </div>
+        </div>
+    </nav>
+
+    <div id="carouselExampleFade" class="carousel slide carousel-fade">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="https://i.pinimg.com/originals/e1/a6/2a/e1a62a6f2b19d19be1dc8640cd66d386.jpg" class="d-block w-100" alt="...">
+                <div class="carousel-caption">
+                    <h2>LOG IN TO REGISTER YOUR VEHICLE!</h2>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="..." class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item">
+                <img src="..." class="d-block w-100" alt="...">
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+    <div>
+        <div style="text-align: center;">
+            <h1 style="color: #47C7FF;">2023 EVENTS</h1>
+        </div>
+        
+        <div class="event-column" style="text-align: center;">
+            <h3>Event: Atlanta Auto Show</h3>
+            <p>Location: Atlanta, Georgia</p>
+            <p>Date: March 10-12, 2023</p>
+        
+            <h3>Event: Sunshine State Car Show</h3>
+            <p>Location: Miami, Florida</p>
+            <p>Date: April 8-9, 2023</p>
+        
+            <h3>Event: Rocket City Auto Expo</h3>
+            <p>Location: Huntsville, Alabama</p>
+            <p>Date: May 20-21, 2023</p>
+        
+            <h3>Event: Savannah Speed Festival</h3>
+            <p>Location: Savannah, Georgia</p>
+            <p>Date: June 17-18, 2023</p>
+        
+            <h3>Event: Gulf Coast Classic Car Show</h3>
+            <p>Location: Pensacola, Florida</p>
+            <p>Date: July 8-9, 2023</p>
+        
+            <h3>Event: Montgomery Muscle Car Show</h3>
+            <p>Location: Montgomery, Alabama</p>
+            <p>Date: August 12-13, 2023</p>
+        
+            <h3>Event: Atlanta Truck and Off-Road Expo</h3>
+            <p>Location: Atlanta, Georgia</p>
+            <p>Date: September 9-10, 2023</p>
+        
+            <h3>Event: Sunshine State Import Meet</h3>
+            <p>Location: Orlando, Florida</p>
+            <p>Date: October 21-22, 2023</p>
+        
+            <h3>Event: Birmingham Hot Rod Revival</h3>
+            <p>Location: Birmingham, Alabama</p>
+            <p>Date: November 11-12, 2023</p>
+        
+            <h3>Event: Georgia Street Rod Nationals</h3>
+            <p>Location: Macon, Georgia</p>
+            <p>Date: December 2-3, 2023</p>
+        </div>
+    <footer class="footer">
+        <p>Subscribe for Updates</p>
+        <form action="/subscribe" method="post">
+            <input type="email" name="email" placeholder="Enter your email" required>
+            <button type="submit">Subscribe</button>
+        </form>
+        
+        <h3>
+            Atlanta, GA
+        </h3>
+        <h3>
+            atlcarevents@email.com 
+        </h3>
+        <h3>
+            ©2023 by Dustin Beckford 
+        </h3>
+    </footer>
+
+</body>
+</html>

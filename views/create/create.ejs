@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('../partials/head'); %>
+
+    <title>Log-In</title>
+    <style>
+        body {
+            background-color: #1a1a1a;
+            color: #ffffff;
+        }
+
+        .container {
+            width: 25%;
+            margin-top: 100px;
+        }
+
+        .form-control {
+            border-radius: 25px;
+            background-color: #ffffff;
+            color: #343a40;
+        }
+
+        .btn-primary {
+            width: 50%;
+            border-radius: 25px;
+            background-color: #007bff;
+            border-color: #007bff;
+        }
+
+        .navbar-form {
+            margin-top: 15px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+
+        .navbar-form .form-group {
+            margin-right: 10px;
+        }
+
+        .footer {
+            background-color: #343a40;
+            padding: 20px 0;
+            color: #ffffff;
+        }
+
+        .footer p {
+            margin: 0;
+            text-align: center;
+        }
+
+        .footer h3 {
+            margin: 10px 0;
+            text-align: center;
+        }
+
+        .footer form {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .footer input[type="email"] {
+            border-radius: 25px;
+            padding: 10px;
+        }
+
+        .footer button {
+            margin-left: 10px;
+            border-radius: 25px;
+            background-color: #007bff;
+            border-color: #007bff;
+            padding: 10px 20px;
+            color: #ffffff;
+        }
+    </style>
+</head>
+
+<body>   
+    <div>
+        <form class="form-inline navbar-form" action="/owner/create_car_by/<%= id %>" method="get">
+            <input type="text" placeholder="Make" name="make">
+            <input type="text" placeholder="Model" name="model">
+            <input type="text" placeholder="Year" name="year">
+            <input type="text" placeholder="Type" name="type">
+            <input type="submit" value="Create Car" />
+          </form>
+          
+               
+    
+    
+
+</body>
+</html>

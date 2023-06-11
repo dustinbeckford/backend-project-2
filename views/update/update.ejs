@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('../partials/head'); %>
+
+    <title>Log-In</title>
+    <style>
+        body {
+            background-color: #1a1a1a;
+            color: #ffffff;
+        }
+
+        .container {
+            width: 25%;
+            margin-top: 100px;
+        }
+
+        .form-control {
+            border-radius: 25px;
+            background-color: #ffffff;
+            color: #343a40;
+        }
+
+        .btn-primary {
+            width: 50%;
+            border-radius: 25px;
+            background-color: #007bff;
+            border-color: #007bff;
+        }
+
+        .navbar-form {
+            margin-top: 15px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+
+        .navbar-form .form-group {
+            margin-right: 10px;
+        }
+
+        .footer {
+            background-color: #343a40;
+            padding: 20px 0;
+            color: #ffffff;
+        }
+
+        .footer p {
+            margin: 0;
+            text-align: center;
+        }
+
+        .footer h3 {
+            margin: 10px 0;
+            text-align: center;
+        }
+
+        .footer form {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .footer input[type="email"] {
+            border-radius: 25px;
+            padding: 10px;
+        }
+
+        .footer button {
+            margin-left: 10px;
+            border-radius: 25px;
+            background-color: #007bff;
+            border-color: #007bff;
+            padding: 10px 20px;
+            color: #ffffff;
+        }
+    </style>
+</head>
+
+<body>   
+    <div>
+        <form class="form-inline navbar-form" action="/owner/update_car_by/<%= id %>" method="post">
+                <input type="text" placeholder="<%= carToEdit.make %>" name="make" value="<%= carToEdit.make %>">
+                <input type="text" placeholder="<%= carToEdit.model %>" name="model" value="<%= carToEdit.model %>">
+                <input type="text" placeholder="<%= carToEdit.year %>" name="year" value="<%= carToEdit.year %>">
+                <input type="text" placeholder="<%= carToEdit.type %>" name="type" value="<%= carToEdit.type %>">
+                <input type="submit" value="Edit Car" />
+                </form>
+               
+    
+    
+
+</body>
+</html>
