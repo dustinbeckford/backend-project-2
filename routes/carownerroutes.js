@@ -96,33 +96,43 @@ router.post("/delete_car_by/:id", async (req, res) => {
   }
 });
 
-router.post("/update_car/:id",  async (req, res) => {
-    const {id} = req.params
-    console.log(id)
-    const carToEdit = await Cars.findOne({
-      raw:true,
-          where:{
-            id:id
-          }
-         });
-         console.log(carToEdit)
-         
-          res.render("update/update.ejs",{carToEdit: {...carToEdit},id:id});
-         
-          router.get("/create_car/:id",  async (req, res) => {
-            const {id} = req.params
-            console.log(id)
-            const carToEdit = await Cars.findOne({
-              raw:true,
-                  where:{
-                    id:id
-                  }
-                 });
-                 console.log(carToEdit)
-                 
-                  res.render("create/create.ejs",{carToEdit: {...carToEdit},id:id});            
+// Render the update form
+router.get("/update_car/:id", async (req, res) => {
+  const carId = req.params.id;
+  try {
+    const car = await Cars.findByPk(carId);
+    if (car) {
+      res.render("update/update.ejs", { car });
+    } else {
+      res.status(404).json({ error: "Car not found" });
+    }
+  } catch (error) {
+    res.status(500).json({ error: "Failed to get car" });
+  }
 });
-})
+
+// Update a car
+router.post("/update_car/:id", async (req, res) => {
+  const carId = req.params.id;
+  const { make, model, year, type, ownerId } = req.body;
+  try {
+    const car = await Cars.findByPk(carId);
+    if (car) {
+      car.make = make;
+      car.model = model;
+      car.year = year;
+      car.type = type;
+      car.ownerId = ownerId;
+      await car.save();
+      res.redirect("/owner/dashboard");
+    } else {
+      res.status(404).json({ error: "Car not found" });
+    }
+  } catch (error) {
+    res.status(500).json({ error: "Failed to update car" });
+  }
+});
+
 
 // Dashboard Route
 router.get("/dashboard", cookieJwtAuth, async (req, res) => {
@@ -145,5 +155,7 @@ router.get("/dashboard", cookieJwtAuth, async (req, res) => {
     res.redirect("/login");
   }
 });
+
+
 
 module.exports = router;

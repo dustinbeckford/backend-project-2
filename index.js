@@ -28,6 +28,7 @@ app.use("/auth", authentication);
 app.use(express.static(__dirname + "/public"));
 app.use("/logout", authentication)
 
+
 app.get("/login", (req, res) => {
   res.render("login/login");
 });
