@@ -99,10 +99,14 @@ router.post("/delete_car_by/:id", async (req, res) => {
 
 router.post("/create_car_by/:id", async (req, res) => {
   const ownerId = req.params.id;
+  console.log(ownerId)
   try {
     const carOwner = await CarOwners.findByPk(ownerId);
+    console.log(carOwner)
     if (carOwner) {
-      res.render("create/create.ejs", { ownerId });
+      await car.create({id, make, model, year, type, ownerId});
+      // res.render("create/create.ejs", { ownerId });
+      res.sendStatus(204);
     } else {
       res.status(404).json({ error: "Car owner not found" });
     }
@@ -134,6 +138,7 @@ router.post("/update_car/:id", async (req, res) => {
   const { make, model, year, type, ownerId } = req.body;
   try {
     const car = await Cars.findByPk(carId);
+    console.log(car)
     if (car) {
       car.make = make;
       car.model = model;
@@ -141,7 +146,7 @@ router.post("/update_car/:id", async (req, res) => {
       car.type = type;
       car.ownerId = ownerId;
       await car.save();
-      res.redirect("/owner/dashboard");
+      res.render("/update/update");
     } else {
       res.status(404).json({ error: "Car not found" });
     }
