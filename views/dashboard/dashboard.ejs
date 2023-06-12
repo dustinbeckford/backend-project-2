@@ -126,9 +126,7 @@
         </div>
     </nav>
     <h1>Car Details</h1>
-    <form action="update_owner_by/:3" method="put">
-        <button type="submit" id="Update Button" class="btn btn-primary rounded-pill">Update</button>
-    </form>
+    
     
 <ul>
   <% carOwners.forEach(function(carOwner) { %>
@@ -143,15 +141,13 @@
     <li>Year: <%= car.year %></li>
     <li>Type: <%= car.type %></li>
     <li>ownerId: <%= car.ownerId %></li>
-    <form action="update_car/<%= car.id  %>" method="post">
-        <input type="submit" value="Edit" />
-    </form>
+    <form action="/owner/update_car_by/<%= car.id %>" method="post">
+        <button type="submit" id="UpdateButton" class="btn btn-primary rounded-pill">Update</button>
+    </form>    
      <form class="form-inline navbar-form" action="/owner/delete_car_by/<%= car.id %>" method="post">
                 <input class="class=btn btn-danger rounded-pill" type="submit" value="Delete Car" />
                 </form>
-                <form action="/owner/create_car_by/<%= car.id %>" method="post">
-                    <button type="submit" class="btn btn-primary rounded-pill">Create Car</button>
-                </form>                
+                
    
     <br>
     <% }); %>

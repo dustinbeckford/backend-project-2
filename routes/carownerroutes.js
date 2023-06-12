@@ -52,43 +52,77 @@ router.get("/get_owners_by/:id", async (req, res) => {
 });
 
 // Update a car owner
-router.put("/update_owner_by/:id", async (req, res) => {
-  const carOwnerId = req.params.id;
-  const { name, car, sponsors, username, password } = req.body;
+router.post("/update_car_by/:id", async (req, res) => {
+  const carId = req.params.id;
+  console.log(req.body, "this is body")
+  const { make,model,year,type} = req.body;
+  console.log(make,model,year,type)
   try {
-    const carOwner = await CarOwners.findByPk(carOwnerId);
-    if (carOwner) {
-      const hashedPassword = await bcrypt.hash(password, 10);
-      carOwner.name = name;
-      carOwner.car = car;
-      carOwner.sponsors = sponsors;
-      carOwner.username = username;
-      carOwner.password = hashedPassword;
-      await carOwner.save();
-      res.json(carOwner);
-    } else {
-      res.status(404).json({ error: "Car owner not found" });
-    }
+      const carToEdit = await Cars.findOne({
+      
+          where:{
+            id:carId
+          }
+         });
+      if(carToEdit){
+        await carToEdit.set({
+          make:make,
+          model:model,
+          year:year,
+          type:type})
+          await carToEdit.save()
+          
+        }
+         res.redirect("/owner/dashboard")
   } catch (error) {
-    res.status(500).json({ error: "Failed to update car owner" });
+    res.status(500).send(error);
   }
 });
 
 // Delete a car owner
-router.delete("/delete_owner_by/:id", async (req, res) => {
-  const carOwnerId = req.params.id;
+router.post("/delete_car_by/:id", async (req, res) => {
+  const carId = req.params.id;
   try {
-    const carOwner = await CarOwners.findByPk(carOwnerId);
-    if (carOwner) {
-      await carOwner.destroy();
+    const car = await Cars.findByPk(carId);
+    if (car) {
+      await car.destroy();
       res.sendStatus(204);
     } else {
       res.status(404).json({ error: "Car owner not found" });
     }
   } catch (error) {
+    console.log(error)
     res.status(500).json({ error: "Failed to delete car owner" });
   }
 });
+
+router.post("/update_car/:id",  async (req, res) => {
+    const {id} = req.params
+    console.log(id)
+    const carToEdit = await Cars.findOne({
+      raw:true,
+          where:{
+            id:id
+          }
+         });
+         console.log(carToEdit)
+         
+          res.render("update/update.ejs",{carToEdit: {...carToEdit},id:id});
+         
+          router.get("/create_car/:id",  async (req, res) => {
+            const {id} = req.params
+            console.log(id)
+            const carToEdit = await Cars.findOne({
+              raw:true,
+                  where:{
+                    id:id
+                  }
+                 });
+                 console.log(carToEdit)
+                 
+                  res.render("create/create.ejs",{carToEdit: {...carToEdit},id:id});            
+});
+})
 
 // Dashboard Route
 router.get("/dashboard", cookieJwtAuth, async (req, res) => {
@@ -100,6 +134,7 @@ router.get("/dashboard", cookieJwtAuth, async (req, res) => {
         ownerId: userId,
       },
     });
+
     const carOwner = await CarOwners.findByPk(userId); // Fetch car owner information for the logged-in user
     res.render("dashboard/dashboard.ejs", {
       cars: cars,
