@@ -142,15 +142,19 @@
     <li>Type: <%= car.type %></li>
     <li>ownerId: <%= car.ownerId %></li>
     <form action="/owner/update_car_by/<%= car.id %>" method="post">
-        <button type="submit" id="UpdateButton" class="btn btn-primary rounded-pill">Update</button>
+      <input type="text" name="make" value="<%= car.make %>" placeholder="Make" required>
+      <input type="text" name="model" value="<%= car.model %>" placeholder="Model" required>
+      <input type="text" name="year" value="<%= car.year %>" placeholder="Year" required>
+      <input type="text" name="type" value="<%= car.type %>" placeholder="Type" required>
+      <input type="text" name="ownerId" value="<%= car.ownerId %>" placeholder="Owner ID" required>
+      <button type="submit" id="UpdateButton" class="btn btn-primary rounded-pill">Update</button>
     </form>    
-     <form class="form-inline navbar-form" action="/owner/delete_car_by/<%= car.id %>" method="post">
-                <input class="class=btn btn-danger rounded-pill" type="submit" value="Delete Car" />
-                </form>
-                
-   
+    <form class="form-inline navbar-form" action="/owner/delete_car_by/<%= car.id %>" method="post">
+      <input class="class=btn btn-danger rounded-pill" type="submit" value="Delete Car" />
+    </form>
     <br>
-    <% }); %>
+  <% }); %>
+  
 
 </ul>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
