@@ -5,84 +5,86 @@
     <title>Car Details</title>
     <style>
         .navbar-nav {
-            flex-direction: row; /* Display the navigation items horizontally */
-            align-items: center; /* Center the items vertically */
+            flex-direction: row;
+            align-items: center;
         }
         
         .navbar-collapse {
-            justify-content: space-between; /* Distribute the items evenly */
+            justify-content: space-between;
         }
         
         #logoutBtn {
             text-decoration: none;
             color: white;
-            background-color: #28a745; /* Green color, you can change it to your desired color */
+            background-color: #28a745;
             padding: 6px 12px;
             border-radius: 4px;
-            transition: box-shadow 0.3s ease-in-out; /* Add transition for glowing effect */
+            transition: box-shadow 0.3s ease-in-out;
         }
         
         #logoutBtn:hover {
-            box-shadow: 0 0 10px rgba(40, 167, 69, 0.8); /* Add glowing effect on hover */
+            box-shadow: 0 0 10px rgba(40, 167, 69, 0.8);
         }
+        
         body {
             background-color: #1a1a1a;
             color: #ffffff;
         }
-
+        
         .container {
             width: 25%;
             margin-top: 100px;
         }
-        .btn-danger{
+        
+        .btn-danger {
             background-color: red;
         }
-
+        
         .form-control {
             border-radius: 25px;
             background-color: #ffffff;
             color: #343a40;
         }
- 
+        
         .navbar-form {
             margin-top: 15px;
             margin-bottom: 15px;
             display: flex;
             align-items: center;
         }
-
+        
         .navbar-form .form-group {
             margin-right: 10px;
         }
-
+        
         .footer {
             background-color: #343a40;
             padding: 20px 0;
             color: #ffffff;
         }
-
+        
         .footer p {
             margin: 0;
             text-align: center;
         }
-
+        
         .footer h3 {
             margin: 10px 0;
             text-align: center;
         }
-
+        
         .footer form {
             display: flex;
             align-items: center;
             justify-content: center;
             margin-top: 20px;
         }
-
+        
         .footer input[type="email"] {
             border-radius: 25px;
             padding: 10px;
         }
-
+        
         .footer button {
             margin-left: 10px;
             border-radius: 25px;
@@ -120,86 +122,123 @@
                         <form action="/auth/logout" method="post">
                             <button type="submit" id="logoutBtn" class="btn btn-primary rounded-pill">Logout</button>
                         </form>
-                    </li>                    
+                    </li>
                 </ul>
             </div>
         </div>
     </nav>
-    <h1>Car Details</h1>
-    
-    
-<ul>
-  <% carOwners.forEach(function(carOwner) { %>
-    <li>Username: <%= carOwner.username %></li>
-    <li>Name: <%= carOwner.name %></li>
-    <li>Sponsors: <%= carOwner.sponsors %></li>
-  <% }); %>
+    <h1>Welcome</h1>
 
-  <% cars.forEach(function(car) { %>
-    <li>Make: <%= car.make %></li>
-    <li>Model: <%= car.model %></li>
-    <li>Year: <%= car.year %></li>
-    <li>Type: <%= car.type %></li>
-    <li>ownerId: <%= car.ownerId %></li>
-    <form action="/owner/update_car_by/<%= car.id %>" method="post">
-      <input type="text" name="make" value="<%= car.make %>" placeholder="Make" required>
-      <input type="text" name="model" value="<%= car.model %>" placeholder="Model" required>
-      <input type="text" name="year" value="<%= car.year %>" placeholder="Year" required>
-      <input type="text" name="type" value="<%= car.type %>" placeholder="Type" required>
-      <input type="text" name="ownerId" value="<%= car.ownerId %>" placeholder="Owner ID" required>
-      <button type="submit" id="UpdateButton" class="btn btn-primary rounded-pill">Update</button>
-    </form>    
-    <form class="form-inline navbar-form" action="/owner/delete_car_by/<%= car.id %>" method="post">
-      <input class="class=btn btn-danger rounded-pill" type="submit" value="Delete Car" />
-    </form>
-    
-    <br>
-  <% }); %>
-  
+    <ul>
+        <% carOwners.forEach(function(carOwner) { %>
+        <li class="car-owner">Username: <%= carOwner.username %></li>
+        <li class="car-owner">Name: <%= carOwner.name %></li>
+        <li class="car-owner">Sponsors: <%= carOwner.sponsors %></li>
+        <% }); %>
 
-</ul>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+        <% cars.forEach(function(car) { %>
+        <li class="car-details">Make: <%= car.make %></li>
+        <li class="car-details">Model: <%= car.model %></li>
+        <li class="car-details">Year: <%= car.year %></li>
+        <li class="car-details">Type: <%= car.type %></li>
+        <li class="car-details">ownerId: <%= car.ownerId %></li>
+        <!-- Rest of the code... -->
+        <form action="/owner/update_car_by/<%= car.id %>" method="post">
+            <!-- Update Form -->
+            <div class="row">
+                <div class="col">
+                    <div class="mb-3">
+                        <label for="make" class="form-label">Make</label>
+                        <input type="text" name="make" value="<%= car.make %>" class="form-control" id="make" placeholder="Make" required>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="mb-3">
+                        <label for="model" class="form-label">Model</label>
+                        <input type="text" name="model" value="<%= car.model %>" class="form-control" id="model" placeholder="Model" required>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="mb-3">
+                        <label for="year" class="form-label">Year</label>
+                        <input type="text" name="year" value="<%= car.year %>" class="form-control" id="year" placeholder="Year" required>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="mb-3">
+                        <label for="type" class="form-label">Type</label>
+                        <input type="text" name="type" value="<%= car.type %>" class="form-control" id="type" placeholder="Type" required>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="mb-3">
+                        <label for="ownerId" class="form-label">Owner ID</label>
+                        <input type="text" name="ownerId" value="<%= car.ownerId %>" class="form-control" id="ownerId" placeholder="Owner ID" required>
+                    </div>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary">Update</button>
+        </form>
+        
+        <form class="form-inline navbar-form" action="/owner/delete_car_by/<%= car.id %>" method="post">
+            <!-- Delete Button -->
+            <button type="submit" class="btn btn-danger">Delete Car</button>
+        </form>
+        
+        <form class="form-inline navbar-form" action="/owner/create_car_by/<%= car.id %>" method="post">
+            <!-- Create Button -->
+            <button type="submit" class="btn btn-success">Create Car</button>
+        </form>
+               
+       
+        <br>
+        <% }); %>
+    </ul>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+        crossorigin="anonymous"></script>
     <div style="text-align: center;">
         <h1 style="color: #47C7FF;">2023 EVENTS</h1>
     </div>
-    
+
     <div class="event-column" style="text-align: center;">
         <h3>Event: Atlanta Auto Show</h3>
         <p>Location: Atlanta, Georgia</p>
         <p>Date: March 10-12, 2023</p>
-    
+
         <h3>Event: Sunshine State Car Show</h3>
         <p>Location: Miami, Florida</p>
         <p>Date: April 8-9, 2023</p>
-    
+
         <h3>Event: Rocket City Auto Expo</h3>
         <p>Location: Huntsville, Alabama</p>
         <p>Date: May 20-21, 2023</p>
-    
+
         <h3>Event: Savannah Speed Festival</h3>
         <p>Location: Savannah, Georgia</p>
         <p>Date: June 17-18, 2023</p>
-    
+
         <h3>Event: Gulf Coast Classic Car Show</h3>
         <p>Location: Pensacola, Florida</p>
         <p>Date: July 8-9, 2023</p>
-    
+
         <h3>Event: Montgomery Muscle Car Show</h3>
         <p>Location: Montgomery, Alabama</p>
         <p>Date: August 12-13, 2023</p>
-    
+
         <h3>Event: Atlanta Truck and Off-Road Expo</h3>
         <p>Location: Atlanta, Georgia</p>
         <p>Date: September 9-10, 2023</p>
-    
+
         <h3>Event: Sunshine State Import Meet</h3>
         <p>Location: Orlando, Florida</p>
         <p>Date: October 21-22, 2023</p>
-    
+
         <h3>Event: Birmingham Hot Rod Revival</h3>
         <p>Location: Birmingham, Alabama</p>
         <p>Date: November 11-12, 2023</p>
-    
+
         <h3>Event: Georgia Street Rod Nationals</h3>
         <p>Location: Macon, Georgia</p>
         <p>Date: December 2-3, 2023</p>
@@ -210,16 +249,17 @@
             <input type="email" name="email" placeholder="Enter your email" required>
             <button type="submit">Subscribe</button>
         </form>
-        
+
         <h3>
             Atlanta, GA
         </h3>
         <h3>
-            atlcarevents@email.com 
+            atlcarevents@email.com
         </h3>
         <h3>
-            ©2023 by Dustin Beckford 
+            ©2023 by Dustin Beckford
         </h3>
     </footer>
 </body>
+
 </html>

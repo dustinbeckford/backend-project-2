@@ -96,6 +96,23 @@ router.post("/delete_car_by/:id", async (req, res) => {
   }
 });
 
+
+router.post("/create_car_by/:id", async (req, res) => {
+  const ownerId = req.params.id;
+  try {
+    const carOwner = await CarOwners.findByPk(ownerId);
+    if (carOwner) {
+      res.render("create/create.ejs", { ownerId });
+    } else {
+      res.status(404).json({ error: "Car owner not found" });
+    }
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ error: "Failed to create car" });
+  }
+});
+
+
 // Render the update form
 router.get("/update_car/:id", async (req, res) => {
   const carId = req.params.id;
