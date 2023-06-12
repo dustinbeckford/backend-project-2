@@ -43,5 +43,5 @@ Contributions are welcome! If you have any suggestions, bug reports, or feature 
 
 ## Contact
 
-For any inquiries or questions, please contact Dustin Beckford at [email protected]
+For any inquiries or questions, please contact email dustin.beckford@gmail.com
 
