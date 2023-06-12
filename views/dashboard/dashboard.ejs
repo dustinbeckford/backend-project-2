@@ -127,21 +127,26 @@
             </div>
         </div>
     </nav>
-    <h1>Welcome</h1>
+    <h1>Welcome <%= carOwner.username %></h1>
 
-    <ul>
-        <% carOwners.forEach(function(carOwner) { %>
-        <li class="car-owner">Username: <%= carOwner.username %></li>
-        <li class="car-owner">Name: <%= carOwner.name %></li>
-        <li class="car-owner">Sponsors: <%= carOwner.sponsors %></li>
-        <% }); %>
+<ul>
+    <% carOwners.forEach(function(carOwner) { %>
+    <li class="car-owner">Username: <%= carOwner.username %></li>
+    <li class="car-owner">Name: <%= carOwner.name %></li>
+    <li class="car-owner">Sponsors: <%= carOwner.sponsors %></li>
+    <% }); %>
+</ul>
 
-        <% cars.forEach(function(car) { %>
-        <li class="car-details">Make: <%= car.make %></li>
-        <li class="car-details">Model: <%= car.model %></li>
-        <li class="car-details">Year: <%= car.year %></li>
-        <li class="car-details">Type: <%= car.type %></li>
-        <li class="car-details">ownerId: <%= car.ownerId %></li>
+<ul>
+    <% cars.forEach(function(car) { %>
+    <li class="car-details">Make: <%= car.make %></li>
+    <li class="car-details">Model: <%= car.model %></li>
+    <li class="car-details">Year: <%= car.year %></li>
+    <li class="car-details">Type: <%= car.type %></li>
+    <li class="car-details">ownerId: <%= car.ownerId %></li>
+    <% }); %>
+</ul>
+
         <!-- Rest of the code... -->
         <form action="/owner/update_car_by/<%= car.id %>" method="post">
             <!-- Update Form -->
