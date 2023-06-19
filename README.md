@@ -32,8 +32,7 @@ I created the app because there isnt a good car events hosting app online that c
 
 - Node.js
 - Express.js
-- MongoDB
-- React
+- ejs
 - HTML/CSS
 - JavaScript
 
