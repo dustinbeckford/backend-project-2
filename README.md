@@ -4,7 +4,7 @@ The CarEvent App is an application designed to simplify the process of hosting a
 It provides a user-friendly interface and comprehensive features for event organizers to track participants, 
 their cars, event details, and sponsorships.
 
-## WHy create the app?
+## Why create the app?
 I created the app because there isnt a good car events hosting app online that can streamline the process of hosting events.
 
 ## Features
@@ -32,8 +32,7 @@ I created the app because there isnt a good car events hosting app online that c
 
 - Node.js
 - Express.js
-- MongoDB
-- React
+- ejs
 - HTML/CSS
 - JavaScript
 
