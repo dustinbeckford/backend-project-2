@@ -1,3 +1,5 @@
+/** @format */
+
 const express = require("express");
 const app = express();
 const port = 3001;
@@ -26,21 +28,20 @@ app.use("/events", eventRoutes);
 app.use("/carownerevents", carOwnerEvents);
 app.use("/auth", authentication);
 app.use(express.static(__dirname + "/public"));
-app.use("/logout", authentication)
-
+app.use("/logout", authentication);
 
 app.get("/login", (req, res) => {
-  res.render("login/login");
+	res.render("login/login");
 });
 app.get("/signup", (req, res) => {
-  res.render("signup/signup");
+	res.render("signup/signup");
 });
 
 app.get("/logout", (req, res) => {
-  res.render("logout/logout");
+	res.render("logout/logout");
 });
 
 // Start the server
 app.listen(port, () => {
-  console.log(`Server listening on port ${port}`);
+	console.log(`Server listening on port ${port}`);
 });

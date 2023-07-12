@@ -1,7 +1,9 @@
+/** @format */
+
 const jwt = require("jsonwebtoken");
 
 exports.cookieJwtAuth = (req, res, next) => {
-    console.log(req.cookies)
+	console.log(req.cookies);
 	const token = req.cookies.token;
 	try {
 		// The important part
@@ -11,5 +13,5 @@ exports.cookieJwtAuth = (req, res, next) => {
 	} catch (err) {
 		res.clearCookie("token");
 		return res.redirect("/login");
-    }
+	}
 };
