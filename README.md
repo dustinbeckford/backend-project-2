@@ -23,7 +23,7 @@ I created the app because there isnt a good car events hosting app online that c
 
 ## Usage
 
-1. Start the application: `npm start`
+1. Start the application: `nodemon`
 2. Open the app in your browser at `http://localhost:3001`
 3. Create an account or log in as an event organizer.
 4. Use the different features of the app to manage participants, cars, events, and sponsorships.
